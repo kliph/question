@@ -1,0 +1,49 @@
+#!/usr/local/bin/ruby
+require 'optparse'
+def usage
+  """Usage:
+ question [-n <name>] [--] <question_text>
+"""
+end
+
+def salutation(name)
+  "Hey, #{name}, "
+end
+
+def question_text
+  ARGV.join ' '
+end
+
+def format_output(options)
+  name = options[:name]
+
+  out_str = ""
+  out_str << salutation(name) unless name.to_s.empty?
+  out_str << "I know you're hard at work, but I have a quick question for you.  #{question_text}  Please let me know when you get a chance--I know you've got a lot on your plate."
+end
+
+def parse_options!
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = usage
+    opts.on("-n", "--name NAME", "Recipient's name") do |name|
+      options[:name] = name
+    end
+  end.parse!
+  options
+end
+
+def main
+  options = parse_options!
+  puts format_output(options)
+end
+
+main unless ENV['ENV'] == 'test'
+
+# "I know"
+# "I understand"
+# "I believe"
+
+# "I understand you're busy right now."
+# "I know you've got a lot of plates spinning."
+# "I know you're juggling a lot."

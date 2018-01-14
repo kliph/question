@@ -1,0 +1,5 @@
+set -e
+
+./script/lint
+
+bundle exec rspec

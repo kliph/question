@@ -1,0 +1,3 @@
+set -e
+
+bundle exec rubocop question spec/
