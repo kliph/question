@@ -8,23 +8,34 @@ def usage
 end
 
 def salutation(name)
-  "Hey, #{name}, "
+  prefix = ['Howdy,', 'Yo,', 'Hello,', 'Hay,'].sample
+  suffix = ([", how's it going?"] + Array.new(3, '.')).sample
+  "#{prefix} #{name}#{suffix}"
 end
 
 def question_text
   ARGV.join ' '
 end
 
+def outro
+  imperative = 'Please let me know when you get a chance--'
+  preface = ['I know', 'I understand', 'I believe', 'I think'].sample
+  suffix = [
+    "you're busy right now.",
+    "you've got a lot of plates spinning.",
+    "you're juggling a lot."
+  ].sample
+  [imperative + preface, suffix].join ' '
+end
+
 def format_output(options)
   name = options[:name]
 
-  out_str = ''
-  out_str << salutation(name) unless name.to_s.empty?
-  out_str <<
-    "I know you're hard at work, but I have a quick question for you.  "\
-    "#{question_text}  "\
-    'Please let me know when you get a chance--'\
-    "I know you've got a lot on your plate."
+  out_ary = []
+  out_ary << salutation(name) unless name.to_s.empty?
+  out_ary << question_text
+  out_ary << outro
+  out_ary.join(' ')
 end
 
 def parse_options!
@@ -44,11 +55,3 @@ def main
 end
 
 main unless ENV['ENV'] == 'test'
-
-# "I know"
-# "I understand"
-# "I believe"
-
-# "I understand you're busy right now."
-# "I know you've got a lot of plates spinning."
-# "I know you're juggling a lot."
