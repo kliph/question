@@ -1,10 +1,20 @@
 * Question
 Procedurally wrap questions.
 
+* Installation
+
+Clone the repo and then execute the following command in the directory where you cloned this repo:
+
+#+BEGIN_SRC sh
+  ln -s $PWD/question /usr/local/bin/
+#+END_SRC
+
+* Usage
+
 For usage instructions:
 
 #+BEGIN_SRC sh
-  ./question --help
+  question --help
 #+END_SRC
 
 * Development
