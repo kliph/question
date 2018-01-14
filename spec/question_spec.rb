@@ -1,3 +1,6 @@
+# rubocop:disable Metrics/BlockLength
+# frozen_string_literal: true
+
 ENV['ENV'] = 'test'
 
 load './question'
@@ -10,7 +13,7 @@ RSpec.describe '#salutation' do
   end
 end
 
-RSpec.describe "#parse_options!" do
+RSpec.describe '#parse_options!' do
   context 'without options' do
     it 'sets :name to nil' do
       expect(parse_options![:name]).to be_nil
@@ -45,3 +48,4 @@ RSpec.describe "#parse_options!" do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
