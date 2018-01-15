@@ -9,7 +9,9 @@ end
 
 def salutation(name)
   prefix = ['Howdy,', 'Yo,', 'Hello,', 'Hay,'].sample
-  suffix = ([", how's it going?"] + Array.new(3, '.')).sample
+  suffix = Array.new(3, '.')
+  suffix << [", how's it going?", ", I've got a quick question for you."]
+  suffix = suffix.sample
   "#{prefix} #{name}#{suffix}"
 end
 
@@ -19,12 +21,14 @@ end
 
 def outro
   imperative = 'Please let me know when you get a chance--'
-  preface = ['I know', 'I understand', 'I believe', 'I think'].sample
-  suffix = [
-    "you're busy right now.",
-    "you've got a lot of plates spinning.",
-    "you're juggling a lot."
-  ].sample
+  preface = ['I know',
+             'I understand',
+             "I'm under the impression",
+             'I believe',
+             'I think'].sample
+  suffix = ["you're busy right now.",
+            "you've got a lot of plates spinning.",
+            "you're juggling a lot."].sample
   [imperative + preface, suffix].join ' '
 end
 
