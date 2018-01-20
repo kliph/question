@@ -10,7 +10,8 @@ end
 def salutation(name)
   prefix = ['Howdy,', 'Yo,', 'Hello,', 'Hay,'].sample
   suffix = Array.new(3, '.')
-  suffix << [", how's it going?", ", I've got a quick question for you."]
+  suffix = suffix.concat [", how's it going?",
+                          ", I've got a quick question for you."]
   suffix = suffix.sample
   "#{prefix} #{name}#{suffix}"
 end
